@@ -5,7 +5,7 @@ fn main() {
     let input = read_input("input.txt");
     let measurements: Vec<&str> = input.split("\r\n").collect();
 
-    let mut larger_measurement_count = 0;
+    let mut increase_count = 0;
     let mut window: VecDeque<i32> = VecDeque::new();
     let mut current_window = 0;
     let window_length = 3;
@@ -21,10 +21,10 @@ fn main() {
         }
 
         if i >= window_length {
-            larger_measurement_count += if last_window < current_window { 1 } else { 0 };
+            increase_count += if last_window < current_window { 1 } else { 0 };
         }
     } 
-    println!("Result: {}", larger_measurement_count);
+    println!("Result: {}", increase_count);
 }
 
 fn read_input(filename: &str) -> String {
