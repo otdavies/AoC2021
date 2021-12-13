@@ -1,8 +1,9 @@
-use std::{fs, collections::HashMap, slice::SliceIndex};
+use std::{fs, collections::HashMap};
 
 fn main() {
     // Gather input
     let input = read_input("input.txt");
+
     // Convert to integers
     let mut lines = input.lines();
     let draws = lines.next().unwrap_or("nope").split(",").map(|c| c.parse().unwrap()).collect::<Vec<u32>>();
@@ -44,7 +45,7 @@ fn read_input(filename: &str) -> String {
 }
 
 struct Board {
-    pub hits : Vec<u32>,
+    hits : Vec<u32>,
     map : HashMap<u32, usize>,
     win_condition_horizontal: [u32; 5],
     win_condition_vertical: [u32; 5],
@@ -86,7 +87,7 @@ impl Board {
         self.win_condition_vertical[y as usize] += 1;
 
         if self.win_condition_vertical[y as usize] > 4 || self.win_condition_horizontal[x as usize] > 4 {
-            println!("Offset so far: {}", (self.total_board_sum - self.hit_board_sum) * h);
+            println!("Victory value: {}", (self.total_board_sum - self.hit_board_sum) * h);
         }
 
         self.has_won = self.win_condition_vertical[y as usize] > 4 || self.win_condition_horizontal[x as usize] > 4;
