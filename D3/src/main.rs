@@ -22,7 +22,7 @@ fn main() {
     let mut epsilon = 0;
     for (i, b) in bits.iter().enumerate() {
         if *b > 0 { gamma += 2_i32.pow(i as u32); }
-        else { epsilon += 2_i32.pow(i as u32); }+
+        else { epsilon += 2_i32.pow(i as u32); }
     }
 
     // Calculate oxygen rating
